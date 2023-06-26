@@ -52,6 +52,7 @@ export default function Cart() {
             let a = Number(element.price)
             let b = Number(element.quantity)
             final = final + (a*b)
+            final = Math.round(final * 100) / 100
         });
         return final;
     }
@@ -59,32 +60,32 @@ export default function Cart() {
   return (
     <div>
         <Navbar/>
-        <div>
-            <h1>Your Cart</h1>
-            <div>
+        <div className=' w-full flex flex-col justify-center items-center p-10'>
+            <h1 className=' text-2xl font-extrabold'>Your Cart</h1>
+            <div className=' flex flex-col justify-center items-center p-5 gap-5'>
                     {contexty.item.map((ele, index)=>{
                         console.log(ele)
                         return(
-                            <div className="cart" key={index}>
+                            <div className=" flex flex-col justify-center items-center gap-2" key={index}>
                                 <div>
-                                    <Image src={ele.img} alt={ele.title} width={250} height={400}/>
+                                    <Image className=' rounded-lg w-64 h-80' src={ele.img} alt={ele.title} width={250} height={400}/>
                                 </div>
-                                <div>
-                                    <h2>{ele.title}</h2>
-                                    <h3>${ele.price}</h3>
-                                    <div>
-                                        <button onClick={()=>handleSub(index)}>-</button>
+                                <div className=' flex flex-col justify-center items-center'>
+                                    <h2 className=' text-center font-semibold text-lg'>{ele.title}</h2>
+                                    <h3 className=' text-center font-semibold text-md'>${ele.price}</h3>
+                                    <div className=' flex justify-center items-center gap-2'>
+                                        <button className=' bg-white w-8 rounded text-black' onClick={()=>handleSub(index)}>-</button>
                                         <div>{ele.quantity}</div>
-                                        <button onClick={()=>handleAdd(index)}>+</button>
+                                        <button className=' bg-white w-8 rounded text-black' onClick={()=>handleAdd(index)}>+</button>
                                     </div>
                                 </div>
                             </div>
                         )
                     })}
             </div>
-                <div className="payment">
-                    <h2>Subtotal:</h2>
-                    <div className="price">${handleTotal()}</div>
+                <div className=" flex flex-col justify-center items-center gap-2">
+                    <h2 className=' text-center font-bold text-2xl'>Subtotal:</h2>
+                    <div className=" text-center font-semibold text-lg">${handleTotal()}</div>
                 </div>
             </div>
     </div>
