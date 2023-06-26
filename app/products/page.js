@@ -4,22 +4,10 @@ import axios from 'axios';
 import Navbar from '../components/navbar'
 import { contextItem } from '../layout';
 import Card from '../components/card';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 export default function Products() {
-
     const [products, setProduct] = useState([])
     
-    const router = useRouter();
-
-    const handleLink = (product)=>{
-        router.push({
-            pathname:`products/${product.title}`,
-            query: {key:product},
-        })
-    }
-
     const contexty = useContext(contextItem)
     useEffect(()=>{
         axios.get('https://fakestoreapi.com/products?limit=5')
@@ -64,10 +52,8 @@ export default function Products() {
                     products.map((product, index)=>{
                         return(
                             <div key={index}>
-                                <Link href={`products/${product.title}`} passHref>
-                                    <Card onClick={()=>handleLink(product)} product={product} />
-                                </Link>
-                                <button onClick={() => addItem(product)}>Add to Cart</button>
+                                <Card product={product} />
+                                <button>Add to Cart</button>
                             </div>
                         )
                     })
