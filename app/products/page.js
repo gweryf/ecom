@@ -10,7 +10,7 @@ export default function Products() {
     
     const contexty = useContext(contextItem)
     useEffect(()=>{
-        axios.get('https://fakestoreapi.com/products?limit=5')
+        axios.get('https://fakestoreapi.com/products?limit=10')
         .then(res => {setProduct(res.data)})
         .catch(err => console.log(err))
     },[])
@@ -47,13 +47,13 @@ export default function Products() {
     return (
         <div>
             <Navbar/>
-            <div>
+            <div className=' grid grid-cols-1 gap-10 md:grid-cols-3 p-10 md:p-20'>
                 {
                     products.map((product, index)=>{
                         return(
-                            <div key={index}>
+                            <div className=' flex flex-col justify-between items-center' key={index}>
                                 <Card product={product} />
-                                <button>Add to Cart</button>
+                                <button onClick={()=>addItem(product)} className=' bg-white text-black p-2 rounded font-semibold hover:bg-slate-100 transition ease-linear duration-200'>Add to Cart</button>
                             </div>
                         )
                     })
