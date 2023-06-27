@@ -1,0 +1,6 @@
+section{
+    background-color: #e5e5f7;
+    opacity: 0.8;
+    background-image: radial-gradient(circle at center center, #000000, #e5e5f7), repeating-radial-gradient(circle at center center, #000000, #000000, 9px, transparent 18px, transparent 9px);
+    background-blend-mode: multiply;
+}
