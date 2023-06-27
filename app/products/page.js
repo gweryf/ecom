@@ -10,7 +10,7 @@ export default function Products() {
     
     const contexty = useContext(contextItem)
     useEffect(()=>{
-        axios.get('https://fakestoreapi.com/products?limit=10')
+        axios.get('https://api.escuelajs.co/api/v1/products?offset=0&limit=10')
         .then(res => {setProduct(res.data)})
         .catch(err => console.log(err))
     },[])
@@ -39,7 +39,7 @@ export default function Products() {
         if(n){
             handleAdd(product)
         } else{
-            let newItem = {title:product.title, img:product.image, price:product.price, quantity:1}
+            let newItem = {title:product.title, img:product.images[0], price:product.price, quantity:1}
             contexty.setItem([...contexty.item, newItem])
         }
     }
