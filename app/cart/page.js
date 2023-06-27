@@ -48,6 +48,19 @@ export default function Cart() {
         }
     }
 
+    const handleDelete = (targetIndex) => {
+        let updatedItem = contexty.item.map((ele, index) => {
+            if(index === targetIndex){
+                return null
+            } else {
+                return ele
+            }
+        })
+        const filteredUpdate = updatedItem.filter((ele) => ele !== null);
+        console.log(filteredUpdate);
+        contexty.setItem(filteredUpdate)
+    }
+
     const handleTotal = ()=>{
         let final = 0;
         contexty.item.forEach(element => {
@@ -72,7 +85,7 @@ export default function Cart() {
                                 <div>
                                     <Image className=' rounded-lg w-64 h-80' src={ele.img} alt={ele.title} width={250} height={400}/>
                                 </div>
-                                <div className=' flex flex-col justify-center items-center'>
+                                <div className=' flex flex-col gap-2 justify-center items-center'>
                                     <h2 className=' text-center font-semibold text-lg'>{ele.title}</h2>
                                     <h3 className=' text-center font-semibold text-md'>${ele.price}</h3>
                                     <div className=' flex justify-center items-center gap-2'>
@@ -80,6 +93,7 @@ export default function Cart() {
                                         <div>{ele.quantity}</div>
                                         <button className=' bg-white w-8 rounded text-black' onClick={()=>handleAdd(index)}>+</button>
                                     </div>
+                                    <button className=' bg-red-600 p-1 rounded hover:bg-red-500 transition ease-linear duration-300 text-white' onClick={() => handleDelete(index)}>Delete</button>
                                 </div>
                             </div>
                         )
