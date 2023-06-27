@@ -1,9 +1,10 @@
 # E-Commerce
 ## Desktop View
-![ezgif com-video-to-gif](https://github.com/gweryf/ecom/assets/105338002/43a65051-a9c8-4d9f-b4e6-0ca7da4a4372)
+![desktop](https://github.com/gweryf/ecom/assets/105338002/4fb0ca40-e66a-4aa9-b843-c7749d551362)
 
 ## Mobile View
-![mobile](https://github.com/gweryf/ecom/assets/105338002/305c923b-c5f0-4aa7-9ff5-2198d41bafa4)
+![ezgif com-video-to-gif](https://github.com/gweryf/ecom/assets/105338002/0899ffaf-82a0-41f1-8ba1-f5b77ce2b221)
+
 
 ## Tech Stack 
 Made using:
