@@ -20,19 +20,21 @@ export default function Cart() {
     }
 
     const handleSub = (targetIndex)=>{
-        if (contexty.item[targetIndex].quantity > 0){
+        if (contexty.item[targetIndex].quantity >= 1){
             let a = contexty.item[targetIndex].quantity-1
             const updatedItem = contexty.item.map((ele, index)=>{
                 if(index === targetIndex){
+                    if(a===0) return null
                     return {...ele, quantity:a}
                 } else {
                     return ele
                 }
             })
-            contexty.setItem(updatedItem)
+            const filteredUpdate = updatedItem.filter((ele) => ele !== null);
+            contexty.setItem(filteredUpdate)
         } else if(contexty.item[targetIndex].quantity < 1) {
-            const update = contexty.item.map((ele) => {
-                if (ele.quantity === 0) {
+            const update = contexty.item.map((ele, index) => {
+                if (index === targetIndex) {
                   return null;
                 } else {
                   return ele;
